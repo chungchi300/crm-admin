@@ -18,7 +18,7 @@ import {
 } from "react-admin";
 import { getPriorities } from "helpers/util";
 import RichTextInput from "ra-input-rich-text";
-import config from "../config";
+import { base, url } from "../config";
 export class MenuCreate extends React.Component {
   constructor() {
     super();
@@ -27,7 +27,7 @@ export class MenuCreate extends React.Component {
     };
   }
   async componentDidMount() {
-    let categories = await (await fetch(`${config.root}/category`)).json();
+    let categories = await (await fetch(url("/category"))).json();
     let categoryOption = categories.map(category => {
       return {
         id: `/cms/category/${category.id}`,
@@ -35,7 +35,7 @@ export class MenuCreate extends React.Component {
       };
     });
 
-    let posts = await (await fetch(`${config.root}/post`)).json();
+    let posts = await (await fetch(url("/post"))).json();
     let postOption = posts.map(post => {
       return {
         id: `/cms/post/${post.id}`,

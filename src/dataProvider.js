@@ -1,5 +1,6 @@
 import simpleRestProvider from "ra-data-simple-rest";
 import { fetchUtils, Admin, Resource } from "react-admin";
+import { base } from "config";
 // console.log('simpleRestProvider', simpleRestProvider)
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -10,4 +11,4 @@ const httpClient = (url, options = {}) => {
   options.headers.set("Authorization", `Bearer ${token}`);
   return fetchUtils.fetchJson(url, options);
 };
-export default simpleRestProvider("http://localhost:9907", httpClient);
+export default simpleRestProvider(base, httpClient);

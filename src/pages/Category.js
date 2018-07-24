@@ -15,7 +15,7 @@ import {
   DateInput
 } from "react-admin";
 import OpenButton from "./OpenButton";
-import config from "../config";
+import { url } from "../config";
 import RichTextInput from "ra-input-rich-text";
 export const CategoryList = props => (
   <List {...props}>
@@ -26,10 +26,7 @@ export const CategoryList = props => (
       <EditButton basePath="/category" />
       <OpenButton
         onClick={record => {
-          var win = window.open(
-            `${config.root}/cms/category/${record.id}`,
-            "_blank"
-          );
+          var win = window.open(url(`/cms/category/${record.id}`), "_blank");
           win.focus();
         }}
       />

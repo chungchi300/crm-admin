@@ -31,7 +31,7 @@ window.tinymce = tinymce;
 
 import "tinymce/themes/modern/theme";
 import "tinymce/skins/lightgray/skin.min.css";
-import config from "../config";
+import { url } from "../config";
 import TinyMCEInput from "./TinyMCEInput";
 import { getPriorities } from "helpers/util";
 export const PostList = props => (
@@ -50,10 +50,7 @@ export const PostList = props => (
       <EditButton basePath="/post" />
       <OpenButton
         onClick={record => {
-          var win = window.open(
-            `${config.root}/cms/post/${record.id}`,
-            "_blank"
-          );
+          var win = window.open(url(`/cms/post/${record.id}`), "_blank");
           win.focus();
         }}
       />

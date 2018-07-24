@@ -7,13 +7,13 @@ import {
   AUTH_GET_PERMISSIONS
 } from "react-admin";
 // import decodeJwt from 'jwt-decode'
-
+import { url } from "config";
 export default (type, params) => {
   console.log("the type", type, AUTH_LOGOUT);
   if (type === AUTH_LOGIN) {
     console.log("Auth login");
     const { username, password } = params;
-    const request = new Request("http://localhost:9907/membership/login", {
+    const request = new Request(url("/membership/login"), {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: new Headers({ "Content-Type": "application/json" })
